@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Servitøre
+        </title>
+
+        <style>
+            
+        </style>
+    </head>
+
+
+    
+    <body>
+        <header>
+            <h1>
+                Lorem ipsum dolor sit amet.
+            </h1>
+        </header>
+
+
+        <main>
+            <button onclick="fetchSteps()">
+                Daglige steg
+            </button>
+
+            <p id="output"></p>
+        </main>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+
+            function fetchSteps() {
+                fetch("files/Daglige_steg.txt")
+                    .then(response => response.text())
+                    .then(textString => {
+                        let num = 0;
+                        const newArray = textString.split(", ")
+
+                        for (let i = 0; i < newArray.length; i++) {
+                            num += Number(newArray[i])
+                            output.innerHTML += `${i + 1}. Januar: ${newArray[i]}kr <br>`
+                        }
+
+                        output.innerHTML += `Totalt: ${num}kr`
+                    })
+
+                    .catch(error => {
+                        console.error(error)
+                    })
+            }
+        </script>
+    </body>
+</html>
