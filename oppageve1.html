@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Locatl storage
+        </title>
+    </head>
+
+
+    
+    <body>
+        <header>
+            <h1 id="welcome">
+                Hyggelig å se nye brukere her! Velkommen til oss!
+            </h1>
+        </header>
+
+
+        <main>
+            <input type="text" id="first_name" />
+            <input type="text" id="last_name" />
+
+            <button onclick="submitName()">
+                Log inn
+            </button>
+
+
+            <p id="output"></p>
+        </main>
+
+
+        <script>
+            let welcome = document.getElementById("welcome");
+            let output = document.getElementById("output");
+
+            function submitName() {
+                let first_name = document.getElementById("first_name").value;
+                let last_name = document.getElementById("last_name").value;
+
+                localStorage.setItem("name", `${first_name} ${last_name}`)
+
+                output.innerHTML = "Lorem ipsum."
+            }
+
+            function start() {
+                if (localStorage.getItem("name")) {
+                    welcome.innerHTML = `Velkommen tilbake til oss, ${localStorage.getItem("name")}`
+                }
+            }
+
+            window.onload = start();
+        </script>
+    </body>
+</html>

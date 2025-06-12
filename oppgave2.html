@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            farger
+        </title>
+
+        <style>
+            
+        </style>
+    </head>
+
+
+    
+    <body>
+        <header>
+            <h1>
+                Lorem ipsum dolor sit amet.
+            </h1>
+        </header>
+
+
+        <main>
+            <select id="background_color">
+                <option value="red">
+                    Rød
+                </option>
+                <option value="blue">
+                    Blå
+                </option>
+                <option value="green">
+                    Grønn
+                </option>
+                <option value="yellow">
+                    Gul
+                </option>
+                <option value="purple">
+                    Lilla
+                </option>
+            </select>
+
+            <button onclick="changeColor()">
+                Endre farge
+            </button>
+        </main>
+
+
+        <script>
+            function changeColor() {
+                let background_color = document.getElementById("background_color").value;
+
+                localStorage.setItem("color", background_color);
+                document.body.style.backgroundColor = localStorage.getItem("color");
+            }
+
+            function start() {
+                if (localStorage.getItem("color")) {
+                    document.body.style.backgroundColor = localStorage.getItem("color");
+                }
+            }
+
+            window.onload = start();
+        </script>
+    </body>
+</html>
