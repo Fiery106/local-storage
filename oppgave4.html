@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Donalds familie
+        </title>
+
+        <style>
+            
+        </style>
+    </head>
+
+
+    
+    <body>
+        <header>
+            <h1>
+                Lorem ipsum dolor sit amet.
+            </h1>
+        </header>
+
+
+        <main>
+            <button onclick="getDucks()">
+                Skriv ut
+            </button>
+
+            <p id="output"></p>
+        </main>
+
+
+        <script>
+            let output = document.getElementById("output");
+
+
+            function getDucks() {
+                fetch("files/Adresser.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        let text = "";
+
+                        for (let i = 0; i < data.length; i++) {
+                            //data.fornavn, data.etternavn, data.adresse.gate, data.adresse.nummer
+
+                            text += 
+                            `
+                                <li> ${data[i].fornavn} ${data[i].etternavn} </li>
+                                <li> ${data[i].adresse.gate} ${data[i].adresse.nummer} </li> <br>
+                            `
+                        }
+
+                        output.innerHTML = `<ul> ${text} </ul>`
+                    })
+
+                    .catch(error => {
+                        console.error(error)
+                    })
+            }
+        </script>
+    </body>
+</html>
